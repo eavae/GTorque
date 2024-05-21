@@ -1,6 +1,6 @@
 import os
 import botpy
-from g_serve.bot.client import BotClient
+from g_qbot.client import BotClient
 
 
 if __name__ == "__main__":
