@@ -1,3 +1,9 @@
 fastapi==0.111.0
 fastapi-cli==0.0.4
 qq-botpy==1.2.1
+qdrant-client==1.9.1
+llama-index==0.10.37
+llama-index-vector-stores-qdrant==0.2.8
+retry==0.9.2
+redis==5.0.4
+tokenizers==0.19.1
