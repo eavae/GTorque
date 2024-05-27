@@ -119,7 +119,7 @@ class RedisChatStore(BaseChatStore):
 class MaxConversationMemoryBuffer(BaseMemory):
     """Simple buffer for storing chat history."""
 
-    token_limit: int = 1536
+    token_limit: int = 6144  # 这里包含了上下文、系统提示词等
     tokenizer_fn: Callable[[str], List] = Field(
         default_factory=get_tokenizer,
         exclude=True,
@@ -136,8 +136,8 @@ class MaxConversationMemoryBuffer(BaseMemory):
     @root_validator(pre=True)
     def validate_memory(cls, values: dict) -> dict:
         # Validate token limit
-        token_limit = values.get("token_limit", -1)
-        if token_limit < 1:
+        token_limit = values.get("token_limit")
+        if token_limit is not None and token_limit < 1:
             raise ValueError("Token limit must be set and greater than 0.")
 
         # Validate tokenizer -- this avoids errors when loading from json/dict
@@ -211,8 +211,9 @@ class MaxConversationMemoryBuffer(BaseMemory):
 
     def get(self, initial_token_count: int = 0, **kwargs: Any) -> List[ChatMessage]:
         """Get chat history."""
+        # at least return the last 2 messages
         if initial_token_count > self.token_limit:
-            raise ValueError("Initial token count exceeds token limit")
+            return self.chat_store.get_messages(self.chat_store_key, start=-3, end=-1)
 
         batch_size = self.max_conversations * 2
         max_user_bot_message_count = self.max_conversations * 2

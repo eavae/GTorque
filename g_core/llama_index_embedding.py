@@ -207,13 +207,15 @@ class LlamaIndexEmbedding(MultiModalEmbedding):
         return self._embedding_texts([query])[0]
 
     async def _aget_query_embedding(self, query: str) -> List[float]:
-        return await self._a_embedding_texts([query])[0]
+        embeddings = await self._a_embedding_texts([query])
+        return embeddings[0]
 
     def _get_text_embedding(self, text: str) -> List[float]:
         return self._embedding_texts([text])[0]
 
     async def _aget_text_embedding(self, text: str) -> Embedding:
-        return await self._a_embedding_texts([text])[0]
+        text_embeddings = await self._a_embedding_texts([text])
+        return text_embeddings[0]
 
     def _get_text_embeddings(self, texts: List[str]) -> List[List[float]]:
         embeddings = []
@@ -263,7 +265,8 @@ class LlamaIndexEmbedding(MultiModalEmbedding):
         return self._embedding_images([image])[0]
 
     async def _aget_image_embedding(self, image: ImageType) -> List[float]:
-        return await self._a_embedding_images([image])[0]
+        image_embeddings = await self._a_embedding_images([image])
+        return image_embeddings[0]
 
     def _embedding_texts(self, texts: List[str]) -> List[List[float]]:
         return self._embedding(self.text_model, texts)

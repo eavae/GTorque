@@ -2,6 +2,7 @@
 .env.*
 .vscode
 *.log
+*.log.*
 __pycache__
 /data
 /config
