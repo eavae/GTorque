@@ -4,7 +4,6 @@ from llama_index.core.llms.llm import LLM
 from llama_index.core import Settings
 from llama_index.core.indices.prompt_helper import PromptHelper
 from llama_index.vector_stores.qdrant import QdrantVectorStore
-from qdrant_client import QdrantClient, AsyncQdrantClient
 
 from g_core.llama_index_embedding import LlamaIndexEmbedding, RedisCache
 from g_core.config.redis import get_redis
@@ -13,12 +12,11 @@ from g_core.memory.max_conversation_memory_buffer import (
     MaxConversationMemoryBuffer,
     RedisChatStore,
 )
+from g_core.config.qdrant import get_qdrant_client, get_async_qdrant_client
 
 
 EMBEDDING_MODEL = "BAAI/bge-m3"
 
-client = QdrantClient()
-aclient = AsyncQdrantClient()
 
 llm = OpenAIExt(
     model=os.getenv("G_BOT_CHAT_MODEL"),
@@ -51,8 +49,8 @@ async def aget_sparse_embedding_batch(texts):
 def get_vector_store(collection_name: str, enable_hybrid=True, *args, **kwargs):
     return QdrantVectorStore(
         collection_name,
-        client=client,
-        aclient=aclient,
+        client=get_qdrant_client(),
+        aclient=get_async_qdrant_client(),
         enable_hybrid=enable_hybrid,
         sparse_doc_fn=get_sparse_embedding_batch,
         sparse_query_fn=aget_sparse_embedding_batch,

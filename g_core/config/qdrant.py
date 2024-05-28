@@ -1,7 +1,12 @@
+import os
 from qdrant_client import QdrantClient, AsyncQdrantClient
 
-client = QdrantClient()
-aclient = AsyncQdrantClient()
+client = QdrantClient(
+    os.getenv("QDRANT_URL", "localhost"),
+)
+aclient = AsyncQdrantClient(
+    os.getenv("QDRANT_URL", "localhost"),
+)
 
 
 def get_qdrant_client():

@@ -64,7 +64,7 @@ class RedisChatStore(BaseChatStore):
             self.redis_client.expire(key, self.ttl)
 
     def get_messages(self, key: str, start=0, end=-1) -> List[ChatMessage]:
-        if end == -1:
+        if end == -1 and start == 0:
             warnings.warn("Retrieving all messages from Redis can be slow. ")
 
         messages = self.redis_client.lrange(key, start, end)
