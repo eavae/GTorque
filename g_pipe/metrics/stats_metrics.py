@@ -1,5 +1,5 @@
 import numpy as np
-from typing import List
+from typing import List, Dict
 from jieba.posseg import cut
 from collections import defaultdict
 from tqdm import tqdm
@@ -19,9 +19,9 @@ class PartOfSpeechEntropy:
         self,
         file_paths: List[str],
         show_progress=True,
-    ) -> List[float]:
+    ) -> Dict[str, float]:
         if self._n_workers == 1:
-            return list(
+            entropies = list(
                 tqdm(
                     map(
                         self._compute_entropy,
@@ -31,20 +31,22 @@ class PartOfSpeechEntropy:
                     disable=not show_progress,
                 )
             )
+        else:
+            from concurrent.futures import ProcessPoolExecutor
 
-        from concurrent.futures import ProcessPoolExecutor
-
-        with ProcessPoolExecutor(max_workers=self._n_workers) as executor:
-            return list(
-                tqdm(
-                    executor.map(
-                        self._compute_entropy,
-                        file_paths,
-                    ),
-                    total=len(file_paths),
-                    disable=not show_progress,
+            with ProcessPoolExecutor(max_workers=self._n_workers) as executor:
+                entropies = list(
+                    tqdm(
+                        executor.map(
+                            self._compute_entropy,
+                            file_paths,
+                        ),
+                        total=len(file_paths),
+                        disable=not show_progress,
+                    )
                 )
-            )
+
+        return dict(zip(file_paths, entropies))
 
     def _compute_entropy(self, file_path: str) -> float:
         """
