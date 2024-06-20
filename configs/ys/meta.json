@@ -1,9 +1,9 @@
 {
   "categories": [
     {
-      "cat_name": "Congeal Plume",
-      "n_pages": 1,
-      "score": 4.0
+      "cat_name": "NPC",
+      "n_pages": 1243,
+      "score": 5.0
     },
     {
       "cat_name": "七国徽印",
@@ -13,192 +13,157 @@
     {
       "cat_name": "七天神像",
       "n_pages": 4,
-      "score": 4.666666666666667
+      "score": 5.0
     },
     {
       "cat_name": "世界任务",
       "n_pages": 17,
-      "score": 3.6666666666666665
-    },
-    {
-      "cat_name": "个人线",
-      "n_pages": 8,
-      "score": 3.6666666666666665
-    },
-    {
-      "cat_name": "个人线攻略",
-      "n_pages": 8,
-      "score": 3.6666666666666665
+      "score": 5.0
     },
     {
       "cat_name": "书籍",
       "n_pages": 63,
-      "score": 4.0
+      "score": 4.333333333333333
     },
     {
       "cat_name": "任务",
-      "n_pages": 892,
-      "score": 4.0
+      "n_pages": 893,
+      "score": 5.0
     },
     {
-      "cat_name": "任务:森林书",
-      "n_pages": 1,
-      "score": 4.0
+      "cat_name": "任务道具",
+      "n_pages": 911,
+      "score": 5.0
     },
     {
       "cat_name": "传说任务",
       "n_pages": 104,
-      "score": 4.333333333333333
+      "score": 5.0
     },
     {
-      "cat_name": "充值礼包",
-      "n_pages": 4,
+      "cat_name": "兑换券",
+      "n_pages": 51,
       "score": 4.0
     },
     {
       "cat_name": "冒险道具",
       "n_pages": 17,
-      "score": 4.333333333333333
+      "score": 4.0
     },
     {
-      "cat_name": "北陆图书馆",
+      "cat_name": "北陆图书馆攻略",
       "n_pages": 2,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "卡牌",
       "n_pages": 396,
-      "score": 3.6666666666666665
+      "score": 5.0
     },
     {
-      "cat_name": "可钓游鱼",
-      "n_pages": 38,
-      "score": 3.6666666666666665
+      "cat_name": "卡牌/牌具",
+      "n_pages": 31,
+      "score": 5.0
+    },
+    {
+      "cat_name": "卡牌/词条解释",
+      "n_pages": 185,
+      "score": 5.0
     },
     {
       "cat_name": "合成图纸",
       "n_pages": 7,
-      "score": 4.0
-    },
-    {
-      "cat_name": "同人",
-      "n_pages": 1,
-      "score": 4.0
-    },
-    {
-      "cat_name": "同人攻略",
-      "n_pages": 1,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "名片",
       "n_pages": 199,
-      "score": 3.6666666666666665
-    },
-    {
-      "cat_name": "告示牌",
-      "n_pages": 1,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "命之座激活",
       "n_pages": 5,
-      "score": 4.666666666666667
+      "score": 4.0
     },
     {
       "cat_name": "圣物匣",
       "n_pages": 3,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "圣遗物",
       "n_pages": 77,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "圣遗物套装",
       "n_pages": 53,
-      "score": 4.333333333333333
+      "score": 5.0
     },
     {
       "cat_name": "圣遗物强化素材",
       "n_pages": 2,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "地图事件",
       "n_pages": 377,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "多重系列任务",
       "n_pages": 3,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "天赋培养素材",
       "n_pages": 30,
-      "score": 4.666666666666667
-    },
-    {
-      "cat_name": "始基矿",
-      "n_pages": 3,
-      "score": 4.0
-    },
-    {
-      "cat_name": "委托任务",
-      "n_pages": 147,
-      "score": 4.0
-    },
-    {
-      "cat_name": "官方视频",
-      "n_pages": 6,
-      "score": 3.6666666666666665
-    },
-    {
-      "cat_name": "官方视频攻略",
-      "n_pages": 6,
       "score": 5.0
     },
     {
-      "cat_name": "实测体验攻略",
-      "n_pages": 16,
-      "score": 3.6666666666666665
+      "cat_name": "头像",
+      "n_pages": 1,
+      "score": 5.0
+    },
+    {
+      "cat_name": "委托事件",
+      "n_pages": 1,
+      "score": 5.0
+    },
+    {
+      "cat_name": "委托任务",
+      "n_pages": 148,
+      "score": 5.0
     },
     {
       "cat_name": "小道具",
       "n_pages": 69,
-      "score": 4.0
+      "score": 5.0
     },
     {
-      "cat_name": "探索攻略",
-      "n_pages": 27,
-      "score": 4.0
+      "cat_name": "怪物",
+      "n_pages": 288,
+      "score": 4.333333333333333
+    },
+    {
+      "cat_name": "摆设",
+      "n_pages": 1583,
+      "score": 4.333333333333333
     },
     {
       "cat_name": "摆设套装",
       "n_pages": 84,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "摆设素材",
       "n_pages": 25,
-      "score": 3.6666666666666665
-    },
-    {
-      "cat_name": "攻略",
-      "n_pages": 149,
       "score": 4.0
-    },
-    {
-      "cat_name": "攻略攻略",
-      "n_pages": 13,
-      "score": 3.6666666666666665
     },
     {
       "cat_name": "旋曜玉帛",
       "n_pages": 119,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "术语",
@@ -208,72 +173,107 @@
     {
       "cat_name": "机制攻略",
       "n_pages": 34,
-      "score": 3.6666666666666665
+      "score": 5.0
     },
     {
-      "cat_name": "材料",
-      "n_pages": 557,
-      "score": 4.333333333333333
-    },
-    {
-      "cat_name": "枫丹区域特产",
-      "n_pages": 8,
-      "score": 3.6666666666666665
-    },
-    {
-      "cat_name": "枫达奖杯",
+      "cat_name": "机械丘丘解密",
       "n_pages": 2,
       "score": 3.5
     },
     {
+      "cat_name": "材料",
+      "n_pages": 557,
+      "score": 4.0
+    },
+    {
+      "cat_name": "枫丹区域特产",
+      "n_pages": 8,
+      "score": 4.0
+    },
+    {
+      "cat_name": "枫达奖杯",
+      "n_pages": 2,
+      "score": 5.0
+    },
+    {
+      "cat_name": "森林书",
+      "n_pages": 35,
+      "score": 5.0
+    },
+    {
       "cat_name": "武器",
       "n_pages": 188,
-      "score": 3.6666666666666665
+      "score": 5.0
     },
     {
       "cat_name": "武器培养素材",
       "n_pages": 60,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "武器强化素材",
       "n_pages": 3,
-      "score": 3.6666666666666665
+      "score": 5.0
     },
     {
       "cat_name": "武器突破素材",
       "n_pages": 60,
-      "score": 4.333333333333333
+      "score": 5.0
     },
     {
-      "cat_name": "活动任务",
-      "n_pages": 2,
-      "score": 4.0
+      "cat_name": "活动",
+      "n_pages": 298,
+      "score": 5.0
+    },
+    {
+      "cat_name": "活动事件",
+      "n_pages": 201,
+      "score": 5.0
+    },
+    {
+      "cat_name": "活动材料",
+      "n_pages": 6,
+      "score": 5.0
     },
     {
       "cat_name": "活动道具",
       "n_pages": 4,
-      "score": 4.0
+      "score": 5.0
+    },
+    {
+      "cat_name": "消耗品",
+      "n_pages": 420,
+      "score": 5.0
     },
     {
       "cat_name": "游戏攻略",
       "n_pages": 4,
-      "score": 3.6666666666666665
+      "score": 5.0
+    },
+    {
+      "cat_name": "烟花",
+      "n_pages": 18,
+      "score": 4.0
     },
     {
       "cat_name": "版本更新",
       "n_pages": 65,
-      "score": 4.0
+      "score": 4.666666666666667
     },
     {
       "cat_name": "璃月区域特产",
       "n_pages": 9,
-      "score": 4.0
+      "score": 5.0
+    },
+    {
+      "cat_name": "相关爆料攻略",
+      "n_pages": 14,
+      "score": 5.0
     },
     {
       "cat_name": "礼包",
       "n_pages": 17,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "祈愿道具",
@@ -281,69 +281,49 @@
       "score": 5.0
     },
     {
+      "cat_name": "种子",
+      "n_pages": 31,
+      "score": 4.0
+    },
+    {
       "cat_name": "秘境",
       "n_pages": 36,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "稻妻",
       "n_pages": 2,
-      "score": 4.5
+      "score": 5.0
     },
     {
       "cat_name": "稻妻区域特产",
       "n_pages": 9,
-      "score": 4.0
-    },
-    {
-      "cat_name": "精炼材料",
-      "n_pages": 19,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "系列任务",
       "n_pages": 33,
-      "score": 3.6666666666666665
+      "score": 5.0
     },
     {
       "cat_name": "素材",
       "n_pages": 23,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "组合怪物",
       "n_pages": 2,
-      "score": 4.0
-    },
-    {
-      "cat_name": "考究攻略",
-      "n_pages": 5,
-      "score": 3.6666666666666665
-    },
-    {
-      "cat_name": "联动活动",
-      "n_pages": 1,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "药剂",
       "n_pages": 14,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "蒙德区域特产",
       "n_pages": 8,
-      "score": 4.0
-    },
-    {
-      "cat_name": "视频",
-      "n_pages": 2,
-      "score": 3.5
-    },
-    {
-      "cat_name": "视频攻略",
-      "n_pages": 2,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "角色",
@@ -358,7 +338,7 @@
     {
       "cat_name": "角色培养素材",
       "n_pages": 33,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "角色天赋素材",
@@ -368,17 +348,17 @@
     {
       "cat_name": "角色家园信息",
       "n_pages": 83,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "角色攻略",
       "n_pages": 48,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "角色突破素材",
       "n_pages": 32,
-      "score": 4.333333333333333
+      "score": 5.0
     },
     {
       "cat_name": "角色经验素材",
@@ -388,12 +368,12 @@
     {
       "cat_name": "角色获取",
       "n_pages": 9,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "角色衣装",
       "n_pages": 17,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "设定集",
@@ -408,57 +388,83 @@
     {
       "cat_name": "邀约事件",
       "n_pages": 18,
-      "score": 4.0
+      "score": 5.0
     },
     {
-      "cat_name": "野生生物",
-      "n_pages": 157,
-      "score": 3.6666666666666665
+      "cat_name": "配队攻略",
+      "n_pages": 7,
+      "score": 5.0
     },
     {
       "cat_name": "锻造图纸",
       "n_pages": 27,
-      "score": 4.0
+      "score": 5.0
     },
     {
       "cat_name": "锻造用矿石",
       "n_pages": 7,
-      "score": 4.0
+      "score": 4.333333333333333
+    },
+    {
+      "cat_name": "限时充值礼包",
+      "n_pages": 9,
+      "score": 5.0
     },
     {
       "cat_name": "隐藏任务",
       "n_pages": 17,
-      "score": 3.6666666666666665
-    },
-    {
-      "cat_name": "需要帮助",
-      "n_pages": 109,
-      "score": 3.6666666666666665
+      "score": 5.0
     },
     {
       "cat_name": "须弥区域特产",
       "n_pages": 9,
-      "score": 4.0
+      "score": 5.0
     },
     {
-      "cat_name": "风之翼",
-      "n_pages": 13,
+      "cat_name": "食材",
+      "n_pages": 64,
       "score": 4.0
     },
     {
       "cat_name": "食物",
       "n_pages": 297,
-      "score": 3.6666666666666665
+      "score": 5.0
     },
     {
       "cat_name": "魔神任务",
       "n_pages": 45,
-      "score": 4.0
+      "score": 5.0
+    },
+    {
+      "cat_name": "鱼竿",
+      "n_pages": 7,
+      "score": 5.0
     },
     {
       "cat_name": "鱼饵",
       "n_pages": 8,
-      "score": 4.0
+      "score": 5.0
     }
+  ],
+  "samples": [
+    "「心意涂鸦」",
+    "克洛琳德/家园",
+    "卡牌：幻戏倒计时：3",
+    "卡牌：词条解释/梅赫拉克的助力",
+    "拟想！强者与迷宫！",
+    "旋曜玉帛·其一百一十九",
+    "是荒泷生命摇滚虹色大巡回",
+    "晚风圆号",
+    "普通的木头",
+    "水之国度的斑驳色彩",
+    "水仙十字之剑",
+    "沙漠苗圃",
+    "烤肉香香香卷",
+    "纪行·衍演",
+    "艾梅莉埃",
+    "艾瑟娜",
+    "被缚的囚徒",
+    "角斗士的希冀",
+    "问题的转化·理论强度"
   ]
 }

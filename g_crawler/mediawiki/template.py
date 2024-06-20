@@ -13,6 +13,7 @@ from functools import lru_cache
 from tqdm import tqdm
 from retry_async import retry
 from datetime import datetime
+from typing import List
 
 retry_exceptions = (ServerDisconnectedError, ServerConnectionError, ServerTimeoutError)
 
@@ -219,9 +220,17 @@ async def filter_categories_by_llm(categories: list[dict[str, int]]):
 
 async def update_site_meta(
     site: str,
-    field: str = "categories",
+    fields: List[str] = ["categories"],
     mode: str = "upsert",
 ):
+    """
+    更新站点的元数据
+
+    Args:
+        site (str): site_name of bwiki
+        field (str, optional): categories or samples. Defaults to "categories".
+        mode (str, optional): upsert or replace. Defaults to "upsert".
+    """
     site_meta_file_path = f"configs/{site}/meta.json"
 
     # if folder not exists, create it
@@ -232,7 +241,9 @@ async def update_site_meta(
             f.write(json.dumps({}, indent=2, ensure_ascii=False))
 
     meta_data = json.loads(open(site_meta_file_path).read())
-    if field == "categories":
+
+    # update categories
+    if "categories" in fields:
         categories = await get_all_categories("ys")
 
         # 该类别下至少有 2 篇文章
@@ -240,22 +251,42 @@ async def update_site_meta(
         categories = await filter_categories_by_llm(categories)
 
         if mode == "upsert":
-            old_categories = meta_data.get(field, [])
+            old_categories = meta_data.get("categories", [])
             old_categories = {x["cat_name"]: x for x in old_categories}
             new_categories = {x["cat_name"]: x for x in categories}
             old_categories.update(new_categories)
             categories = list(old_categories.values())
 
-        # sort by category name
-        categories = sorted(categories, key=lambda x: x["cat_name"])
-        meta_data[field] = categories
+        categories = sorted(categories, key=lambda x: x["score"], reverse=True)
+        meta_data["categories"] = categories
+
+    # update samples
+    if "samples" in fields:
+        assert meta_data.get("categories"), "Please update categories first."
+
+        df = pd.DataFrame(meta_data["categories"])
+        df = df.sort_values(["score", "n_pages"], ascending=False)
+        n_samples = min(20, len(df))
+        df = df.iloc[:n_samples]
+
+        # sample one page from each category
+        samples = []
+        for cat_name in df["cat_name"]:
+            pages = await get_pages_by_category("ys", cat_name, limit=1)
+            if not pages:
+                continue
+            samples.append(pages[0]["title"])
+
+        if mode == "upsert":
+            samples = meta_data.get("samples", []) + samples
+        meta_data["samples"] = sorted(list(set(samples)))
 
     with open(site_meta_file_path, "w") as f:
         f.write(json.dumps(meta_data, indent=2, ensure_ascii=False))
 
 
 async def main():
-    await update_site_meta("ys", mode="replace")
+    await update_site_meta("ys", fields=["samples"], mode="replace")
 
 
 if __name__ == "__main__":
