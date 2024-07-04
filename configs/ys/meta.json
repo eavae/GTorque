@@ -1,4 +1,9 @@
 {
+  "spider": "BWikiSpider",
+  "start_urls": [
+    "https://wiki.biligame.com/ys"
+  ],
+  "ignore_home": true,
   "categories": [
     {
       "cat_name": "NPC",
@@ -466,5 +471,14 @@
     "被缚的囚徒",
     "角斗士的希冀",
     "问题的转化·理论强度"
+  ],
+  "trim_rules": [
+    "//div[contains(@class, 'bread-edit')]/following-sibling::div[1]",
+    "//div[@class='bread-edit']",
+    "//div[@class='bg-snm']",
+    "//div[@class='tishi']",
+    "//div[@class='toc' and @id='toc']",
+    "//div[@class='resourceLoader']",
+    "//span[@id='Timer1']"
   ]
 }

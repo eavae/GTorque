@@ -164,7 +164,7 @@ def get_likert_scale_chain():
     )
 
 
-async def filter_categories_by_llm(categories: list[dict[str, int]]):
+async def filter_categories_by_llm(site: str, categories: list[dict[str, int]]):
     """exclude categories."""
 
     # exclude with zero shot
@@ -182,7 +182,7 @@ async def filter_categories_by_llm(categories: list[dict[str, int]]):
     pairs = []
     for category in categories:
         pages = await get_pages_by_category(
-            "ys", category["cat_name"], limit=10, with_content=True
+            site, category["cat_name"], limit=10, with_content=True
         )
         pages = random.sample(pages, min(3, len(pages)))
         for page in pages:
@@ -194,7 +194,7 @@ async def filter_categories_by_llm(categories: list[dict[str, int]]):
     triples = []
     for cat_name, page in tqdm(pairs, desc="Likert Scoring"):
         content = page["content"][:512]
-        created_at = page["touched"]
+        created_at = page["timestamp"]
         title = page["title"]
 
         response = await chain.ainvoke(
@@ -244,11 +244,11 @@ async def update_site_meta(
 
     # update categories
     if "categories" in fields:
-        categories = await get_all_categories("ys")
+        categories = await get_all_categories(site)
 
         # 该类别下至少有 2 篇文章
         categories = [x for x in categories if x["n_pages"] >= 2]
-        categories = await filter_categories_by_llm(categories)
+        categories = await filter_categories_by_llm(site, categories)
 
         if mode == "upsert":
             old_categories = meta_data.get("categories", [])
@@ -272,7 +272,7 @@ async def update_site_meta(
         # sample one page from each category
         samples = []
         for cat_name in df["cat_name"]:
-            pages = await get_pages_by_category("ys", cat_name, limit=1)
+            pages = await get_pages_by_category(site, cat_name, limit=1)
             if not pages:
                 continue
             samples.append(pages[0]["title"])
@@ -286,7 +286,9 @@ async def update_site_meta(
 
 
 async def main():
-    await update_site_meta("ys", fields=["samples"], mode="replace")
+    await update_site_meta(
+        "eldenring", fields=["categories", "samples"], mode="replace"
+    )
 
 
 if __name__ == "__main__":

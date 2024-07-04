@@ -1,0 +1,341 @@
+{
+  "spider": "BWikiSpider",
+  "categories": [
+    {
+      "cat_name": "PVE攻略",
+      "n_pages": 4,
+      "score": 5.0
+    },
+    {
+      "cat_name": "PVP攻略",
+      "n_pages": 2,
+      "score": 5.0
+    },
+    {
+      "cat_name": "不祥预言祷告",
+      "n_pages": 3,
+      "score": 5.0
+    },
+    {
+      "cat_name": "制作道具的材料",
+      "n_pages": 67,
+      "score": 5.0
+    },
+    {
+      "cat_name": "卡利亚魔法",
+      "n_pages": 10,
+      "score": 5.0
+    },
+    {
+      "cat_name": "双指信徒祷告",
+      "n_pages": 9,
+      "score": 5.0
+    },
+    {
+      "cat_name": "双指赐予祷告",
+      "n_pages": 3,
+      "score": 5.0
+    },
+    {
+      "cat_name": "圆桌刺客祷告",
+      "n_pages": 3,
+      "score": 5.0
+    },
+    {
+      "cat_name": "基本主义祷告",
+      "n_pages": 9,
+      "score": 5.0
+    },
+    {
+      "cat_name": "寒冷魔法",
+      "n_pages": 5,
+      "score": 5.0
+    },
+    {
+      "cat_name": "对话文本",
+      "n_pages": 2,
+      "score": 5.0
+    },
+    {
+      "cat_name": "异端魔法",
+      "n_pages": 2,
+      "score": 5.0
+    },
+    {
+      "cat_name": "强化用材料",
+      "n_pages": 41,
+      "score": 5.0
+    },
+    {
+      "cat_name": "情报",
+      "n_pages": 38,
+      "score": 5.0
+    },
+    {
+      "cat_name": "战技文本",
+      "n_pages": 177,
+      "score": 5.0
+    },
+    {
+      "cat_name": "战灰",
+      "n_pages": 92,
+      "score": 5.0
+    },
+    {
+      "cat_name": "战灰文本",
+      "n_pages": 96,
+      "score": 5.0
+    },
+    {
+      "cat_name": "护符",
+      "n_pages": 116,
+      "score": 5.0
+    },
+    {
+      "cat_name": "护符文本",
+      "n_pages": 116,
+      "score": 5.0
+    },
+    {
+      "cat_name": "武器",
+      "n_pages": 447,
+      "score": 5.0
+    },
+    {
+      "cat_name": "武器文本",
+      "n_pages": 459,
+      "score": 5.0
+    },
+    {
+      "cat_name": "死亡魔法",
+      "n_pages": 5,
+      "score": 5.0
+    },
+    {
+      "cat_name": "法术祷告文本",
+      "n_pages": 171,
+      "score": 5.0
+    },
+    {
+      "cat_name": "泥人魔法",
+      "n_pages": 2,
+      "score": 5.0
+    },
+    {
+      "cat_name": "满月魔法",
+      "n_pages": 2,
+      "score": 5.0
+    },
+    {
+      "cat_name": "火焰修士祷告",
+      "n_pages": 6,
+      "score": 5.0
+    },
+    {
+      "cat_name": "火焰巨人祷告",
+      "n_pages": 4,
+      "score": 5.0
+    },
+    {
+      "cat_name": "熔岩魔法",
+      "n_pages": 4,
+      "score": 5.0
+    },
+    {
+      "cat_name": "物品",
+      "n_pages": 648,
+      "score": 5.0
+    },
+    {
+      "cat_name": "物品文本",
+      "n_pages": 683,
+      "score": 5.0
+    },
+    {
+      "cat_name": "特殊祷告",
+      "n_pages": 7,
+      "score": 5.0
+    },
+    {
+      "cat_name": "王城古龙祷告",
+      "n_pages": 5,
+      "score": 5.0
+    },
+    {
+      "cat_name": "癫狂叁指祷告",
+      "n_pages": 5,
+      "score": 5.0
+    },
+    {
+      "cat_name": "神皮黑焰祷告",
+      "n_pages": 5,
+      "score": 5.0
+    },
+    {
+      "cat_name": "祷告",
+      "n_pages": 101,
+      "score": 5.0
+    },
+    {
+      "cat_name": "结晶人魔法",
+      "n_pages": 3,
+      "score": 5.0
+    },
+    {
+      "cat_name": "罗蕾塔魔法",
+      "n_pages": 2,
+      "score": 5.0
+    },
+    {
+      "cat_name": "老戴《艾尔登法环 攻略精选》",
+      "n_pages": 8,
+      "score": 5.0
+    },
+    {
+      "cat_name": "老戴《艾尔登法环｜老头环》“保姆级”【全任务/全成就/全结局】流程攻略解说",
+      "n_pages": 62,
+      "score": 5.0
+    },
+    {
+      "cat_name": "臂甲",
+      "n_pages": 90,
+      "score": 5.0
+    },
+    {
+      "cat_name": "艾尔登法环PVP合集by英犁梨",
+      "n_pages": 60,
+      "score": 5.0
+    },
+    {
+      "cat_name": "贵重物品",
+      "n_pages": 242,
+      "score": 5.0
+    },
+    {
+      "cat_name": "起源魔法",
+      "n_pages": 3,
+      "score": 5.0
+    },
+    {
+      "cat_name": "辉石魔法",
+      "n_pages": 20,
+      "score": 5.0
+    },
+    {
+      "cat_name": "远古黄金树祷告",
+      "n_pages": 5,
+      "score": 5.0
+    },
+    {
+      "cat_name": "道具",
+      "n_pages": 195,
+      "score": 5.0
+    },
+    {
+      "cat_name": "重力魔法",
+      "n_pages": 5,
+      "score": 5.0
+    },
+    {
+      "cat_name": "野兽祷告",
+      "n_pages": 6,
+      "score": 5.0
+    },
+    {
+      "cat_name": "防具文本",
+      "n_pages": 584,
+      "score": 5.0
+    },
+    {
+      "cat_name": "骨灰",
+      "n_pages": 64,
+      "score": 5.0
+    },
+    {
+      "cat_name": "魔法",
+      "n_pages": 71,
+      "score": 5.0
+    },
+    {
+      "cat_name": "鲜血祷告",
+      "n_pages": 4,
+      "score": 5.0
+    },
+    {
+      "cat_name": "黄金树信仰祷告",
+      "n_pages": 5,
+      "score": 5.0
+    },
+    {
+      "cat_name": "黑夜魔法",
+      "n_pages": 7,
+      "score": 5.0
+    },
+    {
+      "cat_name": "龙信祷告",
+      "n_pages": 2,
+      "score": 5.0
+    },
+    {
+      "cat_name": "龙飨祷告",
+      "n_pages": 13,
+      "score": 5.0
+    },
+    {
+      "cat_name": "ＢＯＳＳ",
+      "n_pages": 67,
+      "score": 5.0
+    },
+    {
+      "cat_name": "怪物",
+      "n_pages": 631,
+      "score": 4.333333333333333
+    },
+    {
+      "cat_name": "奉腐者祷告",
+      "n_pages": 3,
+      "score": 4.0
+    },
+    {
+      "cat_name": "防具",
+      "n_pages": 559,
+      "score": 4.0
+    },
+    {
+      "cat_name": "攻略",
+      "n_pages": 3,
+      "score": 3.6666666666666665
+    },
+    {
+      "cat_name": "ＮＰＣ",
+      "n_pages": 74,
+      "score": 3.6666666666666665
+    }
+  ],
+  "samples": [
+    "家族头连枷",
+    "怪物编号34600930",
+    "战技 ：奥陶琵斯的漩涡文本",
+    "战灰：无战技",
+    "战灰：白影诱惑文本",
+    "死亡雷击",
+    "火焰主教臂甲",
+    "牺牲细枝",
+    "珍珠龙徽护符＋２文本",
+    "碎石",
+    "神圣绘画盾文本",
+    "神皮祷告书",
+    "绘画《魔法师》",
+    "老戴 62 【补全】第44集【男法师】罗杰尔",
+    "褪色者的腕带文本",
+    "褪色者老指",
+    "辉石魔砾",
+    "辉石魔砾文本",
+    "黄金卢恩【１】文本",
+    "黑夜女巫与剑士的傀儡"
+  ],
+  "trim_rules": [
+    "//div[@id='bread-edit']",
+    "//center"
+  ]
+}
