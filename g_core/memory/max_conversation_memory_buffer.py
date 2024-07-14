@@ -6,7 +6,7 @@ from llama_index.core.base.llms.types import ChatMessage, MessageRole
 from llama_index.core.bridge.pydantic import Field, root_validator
 from llama_index.core.llms.llm import LLM
 from llama_index.core.memory.types import DEFAULT_CHAT_STORE_KEY, BaseMemory
-from llama_index.core.storage.chat_store import BaseChatStore, SimpleChatStore
+from llama_index.core.storage.chat_store import BaseChatStore
 from llama_index.core.utils import get_tokenizer
 from redis import Redis
 from datetime import datetime
