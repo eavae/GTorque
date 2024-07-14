@@ -1,7 +1,7 @@
 import os
 import botpy
 import g_core.setup_globals  # noqa
-from g_qbot.client import BotClient
+from g_bot.client import BotClient
 
 
 if __name__ == "__main__":
