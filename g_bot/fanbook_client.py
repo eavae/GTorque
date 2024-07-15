@@ -5,7 +5,7 @@ import base64
 import asyncio
 from aiohttp import ClientSession
 from typing_extensions import TypedDict
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, PrivateAttr
 from typing import Optional
 from urllib.parse import urlencode
 from concurrent.futures import TimeoutError
@@ -27,16 +27,56 @@ class Me(TypedDict):
     supports_inline_queries: bool
 
 
-class FanBookHttpClient:
-    base_url = "https://a1.fanbook.mobi/api"
+class Message(TypedDict):
+    channel_id: int
+    message_id: int
+    quote_l1: Optional[int]
+    quote_l2: Optional[int]
 
-    def __init__(self):
+
+class MessageSentResponse(TypedDict):
+    message_id: int
+    date: int
+
+
+class FanBookHttpClient(BaseModel):
+    base_url: str = "https://a1.fanbook.mobi/api"
+    token: str = Field(default_factory=lambda: os.getenv("FANBOOK_BOT_TOKEN"))
+
+    _session: ClientSession = PrivateAttr()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self._session = ClientSession()
 
-    async def get_me(self, token: str) -> Me:
-        async with self._session.get(f"{self.base_url}/bot/{token}/getMe") as resp:
+    async def get_me(self) -> Me:
+        async with self._session.get(f"{self.base_url}/bot/{self.token}/getMe") as resp:
             resp = await resp.json(content_type=None)
             return resp["result"]
+
+    async def reply_channel_msg(
+        self,
+        to: Message,
+        channel_id: int,
+        text: str,
+        desc: Optional[str] = None,
+        **kwargs,
+    ) -> MessageSentResponse:
+        default_kwargs = {}
+        default_kwargs.update(kwargs)
+        default_kwargs.update(
+            {
+                "chat_id": channel_id,
+                "text": text,
+                "desc": desc or text,
+                "reply_to_message_id": to["message_id"],
+            }
+        )
+        async with self._session.post(
+            f"{self.base_url}/bot/{self.token}/sendMessage", data=default_kwargs
+        ) as resp:
+            data = await resp.json(content_type=None)
+            return data["result"]
 
     async def close(self):
         await self._session.close()
@@ -50,7 +90,6 @@ class FanBookHttpClient:
 
 class FanBookApp(BaseModel):
     bot_id: int = Field(default_factory=lambda: int(os.getenv("FANBOOK_BOT_ID")))
-    bot_token: str = Field(default_factory=lambda: os.getenv("FANBOOK_BOT_TOKEN"))
     socket_url: str = Field(default_factory=lambda: os.getenv("FANBOOK_SOCKET_URL"))
 
     user_token: Optional[str] = None
@@ -84,14 +123,18 @@ class FanBookApp(BaseModel):
 
         return f"{self.socket_url}?{urlencode(params)}"
 
-    def on_message(self, message: str):
+    async def on_message(self, message: str):
         msg = json.loads(message)
 
         if msg["action"] in {"connect", "pong"}:
             return
 
         # handle other actions
-        pass
+        await self._client.reply_channel_msg(
+            to=msg["data"],
+            channel_id=msg["data"]["channel_id"],
+            text="Hello, World!",
+        )
 
     async def start(self):
         await self._renew_user_token()
@@ -104,7 +147,7 @@ class FanBookApp(BaseModel):
 
                         while True:
                             message = await socket.recv()
-                            self.on_message(message)
+                            asyncio.create_task(self.on_message(message))
 
                     except websockets.ConnectionClosed:
                         continue
@@ -116,7 +159,7 @@ class FanBookApp(BaseModel):
                     raise e
 
     async def _renew_user_token(self):
-        me = await self._client.get_me(self.bot_token)
+        me = await self._client.get_me()
         self.user_token = me["user_token"]
 
     async def _start_heartbeat(self, socket: websockets.WebSocketClientProtocol):
