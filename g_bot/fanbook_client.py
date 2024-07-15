@@ -66,14 +66,14 @@ class FanBookHttpClient(BaseModel):
         default_kwargs.update(kwargs)
         default_kwargs.update(
             {
-                "chat_id": channel_id,
+                "chat_id": int(channel_id),
                 "text": text,
                 "desc": desc or text,
-                "reply_to_message_id": to["message_id"],
+                "reply_to_message_id": int(to["message_id"]),
             }
         )
         async with self._session.post(
-            f"{self.base_url}/bot/{self.token}/sendMessage", data=default_kwargs
+            f"{self.base_url}/bot/{self.token}/sendMessage", json=default_kwargs
         ) as resp:
             data = await resp.json(content_type=None)
             return data["result"]
