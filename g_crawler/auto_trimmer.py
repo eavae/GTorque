@@ -1,5 +1,4 @@
 import re
-from bs4 import BeautifulSoup
 from typing_extensions import TypedDict
 from typing import List, Optional
 from enum import Enum
@@ -7,7 +6,7 @@ from langgraph.graph import StateGraph
 from langchain_core.output_parsers import BaseOutputParser
 from tokenizers import Tokenizer
 from typing import Literal
-from lxml.html import HTMLParser
+from lxml.html import HTMLParser, HtmlElement
 from pydantic import BaseModel
 from collections import defaultdict
 
@@ -147,7 +146,7 @@ class RuleState(TypedDict):
 
 
 class Draft(TypedDict):
-    tree: BeautifulSoup
+    tree: HtmlElement
     title: str
 
 

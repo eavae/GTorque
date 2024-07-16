@@ -479,6 +479,7 @@
     "//div[@class='tishi']",
     "//div[@class='toc' and @id='toc']",
     "//div[@class='resourceLoader']",
-    "//span[@id='Timer1']"
+    "//span[@id='Timer1']",
+    "//div[@id='navigationFrame']"
   ]
 }

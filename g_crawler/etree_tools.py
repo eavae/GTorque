@@ -3,6 +3,7 @@ from lxml.html import HtmlElement, HtmlComment
 from tokenizers import Tokenizer
 from copy import deepcopy
 from urllib.parse import unquote
+from typing import List
 
 from g_crawler.html_constants import INTERACTIVE_ELEMENTS
 
@@ -128,3 +129,10 @@ def _decode_url(element: HtmlElement):
 def decode_url(element: HtmlElement):
     post_order_traversal(element, _decode_url)
     return element
+
+
+def apply_trim_rules(root: HtmlElement, rules: List[str]):
+    for rule in rules:
+        for ele in root.xpath(rule):
+            ele.getparent().remove(ele)
+    return root
