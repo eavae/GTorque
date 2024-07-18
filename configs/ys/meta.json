@@ -480,6 +480,7 @@
     "//div[@class='toc' and @id='toc']",
     "//div[@class='resourceLoader']",
     "//span[@id='Timer1']",
-    "//div[@id='navigationFrame']"
+    "//div[@id='navigationFrame']",
+    "//div[@class='object-cover']"
   ]
 }
