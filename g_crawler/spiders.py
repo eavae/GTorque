@@ -1,4 +1,5 @@
 import os
+import re
 import scrapy
 import json
 import oss2
@@ -8,6 +9,9 @@ from urllib.parse import unquote
 from lxml import html
 from pydantic import BaseModel
 from datetime import datetime
+from scrapy.linkextractors import LinkExtractor
+from urllib.parse import urlparse
+from tqdm import tqdm
 
 from g_crawler.etree_tools import clean_html, apply_trim_rules, to_string
 from g_crawler.md_converter import GMarkdownConverter
@@ -84,6 +88,21 @@ class CrawlingModes(Enum):
     SAMPLED = "sampled"
 
 
+IGNORED_PATH_PREFIX = [
+    "文件:",
+    "模板:",
+    "用户:",
+    "特殊:",
+    "MediaWiki:",
+    "File:",
+    "Widget:",
+    "User:",
+    "File:",
+    "Data:",
+    "分类:",
+]
+
+
 class BWikiSpider(scrapy.Spider):
     name = "BWiki"
     host = "https://wiki.biligame.com"
@@ -103,8 +122,12 @@ class BWikiSpider(scrapy.Spider):
         with open(config_file_path, "r") as f:
             self._config = json.load(f)
 
+        self._site_name = name
         self._mode = mode
         self._converter = GMarkdownConverter()
+        self._link_extractor = LinkExtractor(unique=True, strip=True)
+        self._processed_links = set()
+        self._progress_bar = tqdm(desc=f"Crawling {self._site_name}", unit=" page")
 
     def start_requests(self):
         meta = {"playwright": True}
@@ -120,12 +143,18 @@ class BWikiSpider(scrapy.Spider):
             yield scrapy.Request(home_url, meta=meta)
 
     def parse(self, response, **kwargs):
+        self._processed_links.add(response.url)
+
         # get meta from response
-        title = response.xpath("//head/meta[@property='og:title']/@content").get()
+        title = (
+            response.xpath("//head/meta[@property='og:title']/@content").get().strip()
+        )
         modified_at = response.xpath(
             "//head/meta[@property='article:modified_time']/@content"
         ).get()
         raw_html = response.css(self.MAIN_SELECTOR).get()
+        if not raw_html:
+            return
 
         etree = html.fragment_fromstring(raw_html)
         etree = clean_html(etree)
@@ -146,10 +175,28 @@ class BWikiSpider(scrapy.Spider):
             markdown=markdown,
             html=raw_html,
         )
+        if title != BWikiSpider.HOME_PAGE:
+            self._progress_bar.update(1)
+            yield item.model_dump(mode="json")
 
-        if self._mode == CrawlingModes.SAMPLED:
-            return item.model_dump(mode="json")
+        # following links
+        for link in self._link_extractor.extract_links(response):
+            if not link.url.startswith(f"{self.host}/{self._site_name}"):
+                continue
 
-        # TODO
+            # skip static files
+            url = urlparse(link.url)
+            if re.match(r"^.*\.[a-zA-Z]{1,8}$", url.path):
+                continue
 
-    # def get_meta
+            # skip ignored paths
+            unquoted_path = unquote(url.path, encoding="utf-8", errors="replace")
+            site_path = unquoted_path.split(self._site_name + "/")[1]
+            if any([site_path.startswith(prefix) for prefix in IGNORED_PATH_PREFIX]):
+                continue
+
+            # skip processed links
+            if link.url in self._processed_links:
+                continue
+
+            yield scrapy.Request(link.url, callback=self.parse)
