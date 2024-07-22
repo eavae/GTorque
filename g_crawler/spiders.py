@@ -17,7 +17,21 @@ from g_crawler.etree_tools import clean_html, apply_trim_rules, to_string
 from g_crawler.md_converter import GMarkdownConverter
 from g_crawler.n_gram_tools import deduplicate_text
 
+
 CONFIG_ROOT = "configs"
+IGNORED_PATH_PREFIX = [
+    "文件:",
+    "模板:",
+    "用户:",
+    "特殊:",
+    "MediaWiki:",
+    "File:",
+    "Widget:",
+    "User:",
+    "File:",
+    "Data:",
+    "分类:",
+]
 
 
 class Item(BaseModel):
@@ -82,31 +96,35 @@ class OssWriterPipeline:
 
     def process_item(self, item, spider):
         item = Item(**item)
+        if any([prefix in item.save_to for prefix in IGNORED_PATH_PREFIX]):
+            return item
 
         try:
             self._put_item_to_oss(item)
         except oss2.exceptions.RequestError:
-            spider.logger.error(f"Failed to write item to oss: {item.url}, skip.")
+            spider.logger.warning(f"Failed to write item to oss: {item.url}, skip.")
+
+        return item
+
+
+class MarkdownWriterPipeline:
+    def process_item(self, item, spider):
+        item = Item(**item)
+        if any([prefix in item.save_to for prefix in IGNORED_PATH_PREFIX]):
+            return item
+
+        # write to markdown
+        save_to = f"{os.getenv('CRAWLER_MARKDOWN_ROOT', 'outputs')}/{item.save_to}.md"
+        os.makedirs(os.path.dirname(save_to), exist_ok=True)
+        with open(save_to, "w") as f:
+            f.write(item.markdown)
+
+        return item
 
 
 class CrawlingModes(Enum):
     FULL = "full"
     SAMPLED = "sampled"
-
-
-IGNORED_PATH_PREFIX = [
-    "文件:",
-    "模板:",
-    "用户:",
-    "特殊:",
-    "MediaWiki:",
-    "File:",
-    "Widget:",
-    "User:",
-    "File:",
-    "Data:",
-    "分类:",
-]
 
 
 class BWikiSpider(scrapy.Spider):
@@ -164,7 +182,7 @@ class BWikiSpider(scrapy.Spider):
 
         etree = html.fragment_fromstring(raw_html)
         etree = clean_html(etree)
-        etree = apply_trim_rules(etree, self._config["trim_rules"])
+        etree = apply_trim_rules(etree, self._config.get("trim_rules", []))
         cleaned_html = to_string(etree)
 
         # convert to md
@@ -184,6 +202,10 @@ class BWikiSpider(scrapy.Spider):
         if title != BWikiSpider.HOME_PAGE:
             self._progress_bar.update(1)
             yield item.model_dump(mode="json")
+
+        # skip links following when in sampled mode
+        if self._mode == CrawlingModes.SAMPLED:
+            return
 
         # following links
         for link in self._link_extractor.extract_links(response):

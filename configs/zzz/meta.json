@@ -1,0 +1,36 @@
+{
+  "categories": [
+    {
+      "cat_name": "角色",
+      "n_pages": 22,
+      "score": 4.0
+    },
+    {
+      "cat_name": "邦布",
+      "n_pages": 22,
+      "score": 4.0
+    },
+    {
+      "cat_name": "音擎",
+      "n_pages": 46,
+      "score": 3.6666666666666665
+    },
+    {
+      "cat_name": "图鉴",
+      "n_pages": 2,
+      "score": 3.5
+    }
+  ],
+  "samples": [
+    "妮可·德玛拉",
+    "巴特勒",
+    "拘缚者",
+    "摇摆爵士"
+  ],
+  "trim_rules": [
+    "//div[@id='bread-edit']",
+    "//center",
+    "//div[@class='toc' and @id='toc']",
+    "//div[@class='alert alert-danger alert-dismissible']"
+  ]
+}

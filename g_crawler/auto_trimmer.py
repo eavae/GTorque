@@ -1,4 +1,5 @@
 import re
+import os
 from typing_extensions import TypedDict
 from typing import List, Optional
 from enum import Enum
@@ -10,7 +11,7 @@ from lxml.html import HTMLParser, HtmlElement
 from pydantic import BaseModel
 from collections import defaultdict
 
-from langchain.chat_models.openai import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage
 from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
 
@@ -76,7 +77,11 @@ class QuantityAssuranceOutputParser(BaseOutputParser):
 
 def get_extract_xpath_for_pruning_chain():
     parser = CheckingWithInlineCodeOutputParser()
-    llm = ChatOpenAI(model="deepseek-coder", temperature=0.1, max_tokens=1024)
+    llm = ChatOpenAI(
+        model=os.getenv("G_CRAWLER_EXTRACT_XPATH_LLM"),
+        temperature=0.1,
+        max_tokens=1024,
+    )
     prompt_template = ChatPromptTemplate.from_messages(
         [
             SystemMessage(content=HTML_PRUNING_TMPL),
@@ -90,7 +95,11 @@ def get_extract_xpath_for_pruning_chain():
 
 def get_fix_xpath_for_pruning_chain():
     parser = CheckingWithInlineCodeOutputParser()
-    llm = ChatOpenAI(model="deepseek-coder", temperature=0.1, max_tokens=1024)
+    llm = ChatOpenAI(
+        model=os.getenv("G_CRAWLER_EXTRACT_XPATH_LLM"),
+        temperature=0.1,
+        max_tokens=1024,
+    )
     prompt_template = ChatPromptTemplate.from_messages(
         [
             SystemMessage(content=HTML_PRUNING_FIX_TMPL),
@@ -104,7 +113,11 @@ def get_fix_xpath_for_pruning_chain():
 
 def get_test_xpath_for_pruning_chain():
     parser = QuantityAssuranceOutputParser()
-    llm = ChatOpenAI(model="deepseek-chat", temperature=0.1, max_tokens=1024)
+    llm = ChatOpenAI(
+        model=os.getenv("G_CRAWLER_TEST_XPATH_LLM"),
+        temperature=0.1,
+        max_tokens=1024,
+    )
     prompt_template = ChatPromptTemplate.from_messages(
         [
             SystemMessage(content=HTML_PRUNING_RULE_TESTING_TMPL),

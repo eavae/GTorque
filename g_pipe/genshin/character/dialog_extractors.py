@@ -9,7 +9,7 @@ from pathlib import Path
 from tqdm import tqdm, trange
 from tqdm.contrib import tenumerate
 from pydantic import BaseModel
-from langchain.chat_models.openai import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.prompts import (
     PromptTemplate,
     ChatPromptTemplate,

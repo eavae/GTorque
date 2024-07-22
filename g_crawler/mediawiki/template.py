@@ -106,7 +106,7 @@ async def get_pages_by_category(
 
 @lru_cache
 def get_game_related_categories_zero_shot_chain():
-    from langchain.chat_models.openai import ChatOpenAI
+    from langchain_openai import ChatOpenAI
     from langchain.output_parsers.list import CommaSeparatedListOutputParser
     from langchain.prompts import PromptTemplate
 
@@ -133,7 +133,7 @@ def get_game_related_categories_zero_shot_chain():
 
 
 def get_likert_scale_chain():
-    from langchain.chat_models.openai import ChatOpenAI
+    from langchain_openai import ChatOpenAI
     from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
     from langchain.schema.messages import SystemMessage
     from langchain_core.prompts.chat import MessagesPlaceholder
