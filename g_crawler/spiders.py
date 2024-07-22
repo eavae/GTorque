@@ -50,9 +50,7 @@ class OssWriterPipeline:
             os.getenv("DOCUMENTS_BUCKET"),
         )
 
-    def process_item(self, item, spider):
-        item = Item(**item)
-
+    def _put_item_to_oss(self, item: Item):
         # 获取元数据
         try:
             head_object_result = self.bucket.head_object(f"markdown/{item.save_to}.md")
@@ -81,6 +79,14 @@ class OssWriterPipeline:
             item.html.encode("utf-8"),
             headers=headers,
         )
+
+    def process_item(self, item, spider):
+        item = Item(**item)
+
+        try:
+            self._put_item_to_oss(item)
+        except oss2.exceptions.RequestError:
+            spider.logger.error(f"Failed to write item to oss: {item.url}, skip.")
 
 
 class CrawlingModes(Enum):
